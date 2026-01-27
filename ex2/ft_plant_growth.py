@@ -4,15 +4,15 @@ class Plant:
 
         name : 植物の名前
         height : 植物の高さ
-        days : 植物の年齢
+        age : 植物の年齢
     """
-    def __init__(self, name: str, height: int, days: int):
+    def __init__(self, name: str, height: int, age_days: int):
         """
         Plantクラスのインスタンスを初期化するメソッド
         """
         self.name = name
         self.height = height
-        self.days = days
+        self.age_days = age_days
 
     def grow(self):
         """
@@ -24,13 +24,13 @@ class Plant:
         """
         植物を1日年を取らせるメソッド
         """
-        self.days += 1
+        self.age_days += 1
 
     def get_info(self) -> str:
         """
         植物の現在の情報を文字列で返すメソッド
         """
-        return f"{self.name}: {self.height}cm, {self.days} days old"
+        return f"{self.name}: {self.height}cm, {self.age_days} age old"
 
 
 def ft_plant_growth():

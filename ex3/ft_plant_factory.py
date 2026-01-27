@@ -4,21 +4,21 @@ class Plant:
 
         name : 植物の名前
         height : 植物の高さ
-        days : 植物の年齢
+        age : 植物の年齢
     """
-    def __init__(self, name: str, height: int, days: int):
+    def __init__(self, name: str, height: int, age: int):
         """
         Plantクラスのインスタンスを初期化するメソッド
         """
         self.name = name
         self.height = height
-        self.days = days
+        self.age = age
 
     def get_info(self) -> str:
         """
         植物の情報を文字列として返すメソッド
         """
-        return f"Created: {self.name} ({self.height}cm, {self.days} days)"
+        return f"Created: {self.name} ({self.height}cm, {self.age} age)"
 
 
 def ft_plant_factory():
@@ -41,7 +41,7 @@ def ft_plant_factory():
         print(plant.get_info())
         count += 1
 
-    print("")
+    print()
     print(f"Total plants created: {count}")
 
 
