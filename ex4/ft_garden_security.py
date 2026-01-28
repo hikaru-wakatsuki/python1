@@ -51,7 +51,7 @@ class SecurePlant:
 
 def ft_garden_security():
     """
-    植物データを安全に管理する仕組みをテストする関数。
+    植物データを安全に管理する仕組みをテストする関数
     """
     print("=== Garden Security System ===")
     plant = SecurePlant("Rose")
