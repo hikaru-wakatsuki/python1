@@ -57,6 +57,7 @@ def ft_garden_security():
     plant = SecurePlant("Rose")
     plant.set_height(25)
     plant.set_age(30)
+    print()
     plant.set_height(-5)
     print()
     print(f"Current plant: {plant.name} "
