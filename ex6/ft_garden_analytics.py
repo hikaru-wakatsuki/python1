@@ -30,6 +30,9 @@ class FloweringPlant(Plant):
     """
     def __init__(self, name: str, height: int, age: int, color: str):
         super().__init__(name, height, age)
+        """
+        FloweringPlantクラスのインスタンスを初期化するメソッド
+        """
         self.color = color
 
 
@@ -42,7 +45,7 @@ class PrizeFlower(FloweringPlant):
     def __init__(self, name: str, height: int, age: int, color: str,
                  points: int):
         """
-        FloweringPlantクラスのインスタンスを初期化するメソッド
+        PrizeFlowerクラスのインスタンスを初期化するメソッド
         """
         super().__init__(name, height, age, color)
         self.points = points
@@ -52,7 +55,10 @@ class GardenManager:
     """
     庭を管理するクラス
 
-        gardens : 管理されている全ての庭
+        owned : 庭の所有者
+        plants : 庭にある植物のリスト
+        total_growth : 植物の総成長量
+        gardens : 管理されている全ての庭（クラス変数）
     """
     gardens = []
 
@@ -68,6 +74,8 @@ class GardenManager:
     class GardenStats:
         """
         庭の統計情報を扱うクラス
+
+            plants : 庭にある植物のリスト
         """
         def __init__(self, plants):
             """
@@ -78,6 +86,7 @@ class GardenManager:
         def total_add(self) -> int:
             """
             庭に追加された植物の総数を返すメソッド
+            戻り値: int
             """
             i = 0
             for _ in self.plants:
@@ -87,9 +96,8 @@ class GardenManager:
         def plant_type(self) -> tuple[int, int, int]:
             """
             植物の種類ごとの数を返すメソッド
-
             戻り値:
-                (通常植物, 花, プライズフラワー)
+                (regular, flowering, prize)
             """
             regular = flowering = prize = 0
             for plant in self.plants:
