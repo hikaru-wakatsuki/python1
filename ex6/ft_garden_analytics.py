@@ -5,6 +5,7 @@ class Plant:
         name : 植物の名前
         height : 植物の高さ
         age : 植物の年齢
+        category : 植物の種類（regular）
     """
     def __init__(self, name: str, height: int, age: int):
         """
@@ -13,6 +14,7 @@ class Plant:
         self.name = name
         self.height = height
         self.age = age
+        self.category = "regular"
 
     def grow(self):
         """
@@ -27,13 +29,15 @@ class FloweringPlant(Plant):
     花を咲かせる植物を表すクラス
 
         color : 花の色
+        category : 植物の種類（flowering）
     """
     def __init__(self, name: str, height: int, age: int, color: str):
-        super().__init__(name, height, age)
         """
         FloweringPlantクラスのインスタンスを初期化するメソッド
         """
+        super().__init__(name, height, age)
         self.color = color
+        self.category = "flowering"
 
 
 class PrizeFlower(FloweringPlant):
@@ -41,6 +45,7 @@ class PrizeFlower(FloweringPlant):
     ポイントを持つ特別な花を表すクラス
 
         points : 獲得ポイント
+        category : 植物の種類（prize）
     """
     def __init__(self, name: str, height: int, age: int, color: str,
                  points: int):
@@ -49,6 +54,7 @@ class PrizeFlower(FloweringPlant):
         """
         super().__init__(name, height, age, color)
         self.points = points
+        self.category = "prize"
 
 
 class GardenManager:
@@ -101,9 +107,9 @@ class GardenManager:
             """
             regular = flowering = prize = 0
             for plant in self.plants:
-                if isinstance(plant, PrizeFlower):
+                if plant.category == "prize":
                     prize += 1
-                elif isinstance(plant, FloweringPlant):
+                elif plant.category == "flowering":
                     flowering += 1
                 else:
                     regular += 1
@@ -115,7 +121,7 @@ class GardenManager:
             """
             score = 92
             for plant in self.plants:
-                if isinstance(plant, PrizeFlower):
+                if plant.category == "prize":
                     if plant.points > 0:
                         score = 218
             return score
