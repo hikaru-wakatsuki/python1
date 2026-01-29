@@ -6,21 +6,21 @@ class Plant:
         height : 植物の高さ
         age : 植物の年齢
     """
-    def __init__(self, name: str, height: int, age_days: int):
+    def __init__(self, name: str, height: int, age_days: int) -> None:
         """
         Plantクラスのインスタンスを初期化するメソッド
         """
-        self.name = name
-        self.height = height
-        self.age_days = age_days
+        self.name: str = name
+        self.height: int = height
+        self.age_days: int = age_days
 
-    def grow(self):
+    def grow(self) -> None:
         """
         植物を成長させるメソッド（高さ +1cm）
         """
         self.height += 1
 
-    def age(self):
+    def age(self) -> None:
         """
         植物を1日年を取らせるメソッド
         """
@@ -33,22 +33,22 @@ class Plant:
         return f"{self.name}: {self.height}cm, {self.age_days} days old"
 
 
-def ft_plant_growth():
+def ft_plant_growth() -> None:
     """
     植物の1週間の成長をシミュレーションする関数
     成長前と成長後の状態、および成長量を表示する
     """
     print("=== Day 1 ===")
-    plant = Plant("Rose", 25, 30)
+    plant: Plant = Plant("Rose", 25, 30)
     print(plant.get_info())
-    start_height = plant.height
+    start_height: int = plant.height
     for _ in range(6):
         plant.age()
         plant.grow()
     print("=== Day 7 ===")
     print(plant.get_info())
-    i = plant.height - start_height
-    print(f"Growth this week: +{i}cm")
+    growth: int = plant.height - start_height
+    print(f"Growth this week: +{growth}cm")
 
 
 if __name__ == "__main__":

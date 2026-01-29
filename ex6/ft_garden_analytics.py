@@ -66,16 +66,16 @@ class GardenManager:
         total_growth : 植物の総成長量
         gardens : 管理されている全ての庭（クラス変数）
     """
-    gardens = []
+    gardens: list["GardenManager"] = []
 
     def __init__(self, owned: str):
         """
         GardenManagerクラスのインスタンスを初期化するメソッド
         """
         self.owned = owned
-        self.plants = []
+        self.plants: list[Plant] = []
         self.total_growth = 0
-        GardenManager.gardens.append(self)
+        GardenManager.gardens += [self]
 
     class GardenStats:
         """
@@ -150,10 +150,10 @@ class GardenManager:
         print(f"=== {self.owned}'s Garden Report ===")
         print("Plants in garden:")
         for plant in self.plants:
-            if isinstance(plant, PrizeFlower):
+            if plant.category == "prize":
                 print(f"- {plant.name}: {plant.height}cm, {plant.color} "
                       f"flowers (blooming), Prize points: {plant.points}")
-            elif isinstance(plant, FloweringPlant):
+            elif plant.category == "flowering":
                 print(f"- {plant.name}: {plant.height}cm, {plant.color} "
                       f"flowers (blooming)")
             else:

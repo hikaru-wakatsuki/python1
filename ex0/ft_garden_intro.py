@@ -1,11 +1,11 @@
-def ft_garden_intro():
+def ft_garden_intro() -> None:
     """
     庭にある植物の基本情報を表示する関数
     植物の名前・高さ・年齢を画面に出力する
     """
-    name = "Rose"
-    height = 25
-    age = 30
+    name: str = "Rose"
+    height: int = 25
+    age: int = 30
 
     print("=== Welcome to My Garden ===")
     print(f"Plant: {name}")

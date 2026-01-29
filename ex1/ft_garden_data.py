@@ -6,28 +6,30 @@ class Plant:
         height : 植物の高さ
         age : 植物の年齢
     """
-    def __init__(self, name: str, height: int, age: int):
+    def __init__(self, name: str, height: int, age: int) -> None:
         """
         Plantクラスのインスタンスを初期化するメソッド
         """
-        self.name = name
-        self.height = height
-        self.age = age
+        self.name: str = name
+        self.height: int = height
+        self.age: int = age
 
 
-def ft_garden_data():
+def ft_garden_data() -> None:
     """
     庭に登録されている植物の一覧を表示する関数
     """
-    plants = [
+    plants: list[Plant] = [
         Plant("Rose", 25, 30),
         Plant("Sunflower", 80, 45),
         Plant("Cactus", 15, 120)
     ]
 
     print("=== Garden Plant Registry ===")
-    for plant in plants:
-        print(f"{plant.name}: {plant.height}cm, {plant.age} days old")
+    i: int
+    for i in range(3):
+        print(f"{plants[i].name}: {plants[i].height}cm, "
+              f"{plants[i].age} days old")
 
 
 if __name__ == "__main__":
