@@ -30,7 +30,7 @@ class SecurePlant:
         負の値は拒否される
         """
         if age < 0:
-            print("Invalid operation attempted: age {age} days [REJECTED]")
+            print(f"Invalid operation attempted: age {age} days [REJECTED]")
             print("Security: Negative age rejected")
         else:
             self._age = age

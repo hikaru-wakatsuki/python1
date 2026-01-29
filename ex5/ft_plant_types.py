@@ -103,37 +103,29 @@ def ft_plant_types():
     各植物タイプのインスタンスを生成し、動作を確認する関数
     """
     print("=== Garden Plant Types ===")
-
     flowers = [
         Flower("Rose", 25, 30, "red"),
         Flower("Tulip", 35, 45, "yellow")
     ]
-
     trees = [
         Tree("Oak", 500, 1825, 50),
         Tree("Pine", 700, 3650, 40)
     ]
-
     vegetables = [
         Vegetable("Tomato", 80, 90, "summer", "vitamin C"),
         Vegetable("Carrot", 30, 70, "autumn", "beta-carotene")
     ]
-
-    for f in flowers:
-        f.describe()
-        f.bloom()
-
+    for i in range(2):
+        flowers[i].describe()
+        flowers[i].bloom()
     print()
-
-    for t in trees:
-        t.describe()
-        t.produce_shade()
-
+    for i in range(2):
+        trees[i].describe()
+        trees[i].produce_shade()
     print()
-
-    for v in vegetables:
-        v.describe()
-        v.nutrition_info()
+    for i in range(2):
+        vegetables[i].describe()
+        vegetables[i].nutrition_info()
 
 
 if __name__ == "__main__":

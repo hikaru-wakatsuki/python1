@@ -18,7 +18,7 @@ class Plant:
         """
         植物の情報を文字列として返すメソッド
         """
-        return f"Created: {self.name} ({self.height}cm, {self.age} age)"
+        return f"Created: {self.name} ({self.height}cm, {self.age} days)"
 
 
 def ft_plant_factory():

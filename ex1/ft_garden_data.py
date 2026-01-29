@@ -6,7 +6,7 @@ class Plant:
         height : 植物の高さ
         age : 植物の年齢
     """
-    def __init__(self, name, height: int, age: int):
+    def __init__(self, name: str, height: int, age: int):
         """
         Plantクラスのインスタンスを初期化するメソッド
         """
@@ -27,7 +27,7 @@ def ft_garden_data():
 
     print("=== Garden Plant Registry ===")
     for plant in plants:
-        print(f"{plant.name}: {plant.height}cm, {plant.age} age old")
+        print(f"{plant.name}: {plant.height}cm, {plant.age} days old")
 
 
 if __name__ == "__main__":
