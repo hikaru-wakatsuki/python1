@@ -108,6 +108,7 @@ class GardenManager:
             regular: int = 0
             flowering: int = 0
             prize: int = 0
+            plant: Plant
             for plant in self.plants:
                 if plant.category == "prize":
                     prize += 1
@@ -122,6 +123,7 @@ class GardenManager:
             庭のスコアを計算して返すメソッド
             """
             score: int = 92
+            plant: Plant
             for plant in self.plants:
                 if plant.category == "prize":
                     if plant.points > 0:
@@ -140,6 +142,7 @@ class GardenManager:
         庭にある全ての植物を成長させるメソッド
         """
         print(f"{self.owned} is helping all plants grow...")
+        plant: Plant
         for plant in self.plants:
             plant.grow()
             self.total_growth += 1
@@ -151,6 +154,7 @@ class GardenManager:
         stats = GardenManager.GardenStats(self.plants)
         print(f"=== {self.owned}'s Garden Report ===")
         print("Plants in garden:")
+        plant: Plant
         for plant in self.plants:
             if plant.category == "prize":
                 print(f"- {plant.name}: {plant.height}cm, {plant.color} "
@@ -178,6 +182,7 @@ class GardenManager:
         count: int = 0
         first: bool = True
         line: str = "Garden scores - "
+        garden: list[GardenManager]
         for garden in cls.gardens:
             stats: GardenManager.GardenStats = cls.GardenStats(garden.plants)
             if not first:
