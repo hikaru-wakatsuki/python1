@@ -6,13 +6,13 @@ class Plant:
         height : 植物の高さ
         age : 植物の年齢
     """
-    def __init__(self, name: str, height: int, age: int):
+    def __init__(self, name: str, height: int, age: int) -> None:
         """
         Plantクラスのインスタンスを初期化するメソッド
         """
-        self.name = name
-        self.height = height
-        self.age = age
+        self.name: str = name
+        self.height: int = height
+        self.age: int = age
 
 
 class Flower(Plant):
@@ -20,20 +20,20 @@ class Flower(Plant):
     花を表すクラス
     color : 花の色
     """
-    def __init__(self, name: str, height: int, age: int, color: str):
+    def __init__(self, name: str, height: int, age: int, color: str) -> None:
         """
         Flowerクラスのインスタンスを初期化するメソッド
         """
         super().__init__(name, height, age)
-        self.color = color
+        self.color: str = color
 
-    def bloom(self):
+    def bloom(self) -> None:
         """
         花が咲く様子を表示するメソッド
         """
         print(f"{self.name} is blooming beautifully!")
 
-    def describe(self):
+    def describe(self) -> None:
         """
         花の情報を表示するメソッド
         """
@@ -46,22 +46,23 @@ class Tree(Plant):
     木を表すクラス
     trunk_diameter : 幹の直径
     """
-    def __init__(self, name: str, height: int, age: int, trunk_diameter: int):
+    def __init__(self, name: str, height: int, age: int,
+                 trunk_diameter: int) -> None:
         """
         Treeクラスのインスタンスを初期化するメソッド
         """
         super().__init__(name, height, age)
-        self.trunk_diameter = trunk_diameter
+        self.trunk_diameter: int = trunk_diameter
 
-    def produce_shade(self):
+    def produce_shade(self) -> None:
         """
         木が作り出す日陰の広さを表示するメソッド
         木の高さ * 幹の直径 / 320
         """
-        shade = self.height * self.trunk_diameter // 320
+        shade: int = self.height * self.trunk_diameter // 320
         print(f"{self.name} provides {shade} square meters of shade")
 
-    def describe(self):
+    def describe(self) -> None:
         """
         木の情報を表示するメソッド
         """
@@ -76,21 +77,21 @@ class Vegetable(Plant):
     nutritional_value : 主な栄養価
     """
     def __init__(self, name: str, height: int, age: int,
-                 harvest_season: str, nutritional_value: str):
+                 harvest_season: str, nutritional_value: str) -> None:
         """
         Vegetableクラスのインスタンスを初期化するメソッド
         """
         super().__init__(name, height, age)
-        self.harvest_season = harvest_season
-        self.nutritional_value = nutritional_value
+        self.harvest_season: str = harvest_season
+        self.nutritional_value: str = nutritional_value
 
-    def nutrition_info(self):
+    def nutrition_info(self) -> None:
         """
         野菜の栄養情報を表示するメソッド
         """
         print(f"{self.name} is rich in {self.nutritional_value}")
 
-    def describe(self):
+    def describe(self) -> None:
         """
         野菜の情報を表示するメソッド
         """
@@ -98,23 +99,24 @@ class Vegetable(Plant):
               f"{self.age} days, {self.harvest_season} harvest")
 
 
-def ft_plant_types():
+def ft_plant_types() -> None:
     """
     各植物タイプのインスタンスを生成し、動作を確認する関数
     """
     print("=== Garden Plant Types ===")
-    flowers = [
+    flowers: list[Flower] = [
         Flower("Rose", 25, 30, "red"),
         Flower("Tulip", 35, 45, "yellow")
     ]
-    trees = [
+    trees: list[Tree] = [
         Tree("Oak", 500, 1825, 50),
         Tree("Pine", 700, 3650, 40)
     ]
-    vegetables = [
+    vegetables: list[Vegetable] = [
         Vegetable("Tomato", 80, 90, "summer", "vitamin C"),
         Vegetable("Carrot", 30, 70, "autumn", "beta-carotene")
     ]
+    i: int
     for i in range(2):
         flowers[i].describe()
         flowers[i].bloom()
