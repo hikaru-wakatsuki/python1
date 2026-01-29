@@ -163,6 +163,9 @@ class GardenManager:
         print()
         print(f"Plants added: {stats.total_add()}, "
               f"Total growth: {self.total_growth}cm")
+        regular: int = 0
+        flowering: int = 0
+        prize: int = 0
         regular, flowering, prize = stats.plant_type()
         print(f"Plant types: {regular} regular, {flowering} flowering, "
               f"{prize} prize flowers")
