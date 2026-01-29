@@ -7,16 +7,16 @@ class Plant:
         age : 植物の年齢
         category : 植物の種類（regular）
     """
-    def __init__(self, name: str, height: int, age: int):
+    def __init__(self, name: str, height: int, age: int) -> None:
         """
         Plantクラスのインスタンスを初期化するメソッド
         """
-        self.name = name
-        self.height = height
-        self.age = age
-        self.category = "regular"
+        self.name: str = name
+        self.height: int = height
+        self.age: int = age
+        self.category: str = "regular"
 
-    def grow(self):
+    def grow(self) -> None:
         """
         植物を1cm成長させるメソッド
         """
@@ -31,13 +31,13 @@ class FloweringPlant(Plant):
         color : 花の色
         category : 植物の種類（flowering）
     """
-    def __init__(self, name: str, height: int, age: int, color: str):
+    def __init__(self, name: str, height: int, age: int, color: str) -> None:
         """
         FloweringPlantクラスのインスタンスを初期化するメソッド
         """
         super().__init__(name, height, age)
-        self.color = color
-        self.category = "flowering"
+        self.color: str = color
+        self.category: str = "flowering"
 
 
 class PrizeFlower(FloweringPlant):
@@ -48,13 +48,13 @@ class PrizeFlower(FloweringPlant):
         category : 植物の種類（prize）
     """
     def __init__(self, name: str, height: int, age: int, color: str,
-                 points: int):
+                 points: int) -> None:
         """
         PrizeFlowerクラスのインスタンスを初期化するメソッド
         """
         super().__init__(name, height, age, color)
-        self.points = points
-        self.category = "prize"
+        self.points: int = points
+        self.category: str = "prize"
 
 
 class GardenManager:
@@ -68,13 +68,13 @@ class GardenManager:
     """
     gardens: list["GardenManager"] = []
 
-    def __init__(self, owned: str):
+    def __init__(self, owned: str) -> None:
         """
         GardenManagerクラスのインスタンスを初期化するメソッド
         """
-        self.owned = owned
+        self.owned: str = owned
         self.plants: list[Plant] = []
-        self.total_growth = 0
+        self.total_growth: int = 0
         GardenManager.gardens += [self]
 
     class GardenStats:
@@ -83,18 +83,18 @@ class GardenManager:
 
             plants : 庭にある植物のリスト
         """
-        def __init__(self, plants):
+        def __init__(self, plants: list[Plant]) -> None:
             """
             GardenStatsクラスのインスタンスを初期化するメソッド
             """
-            self.plants = plants
+            self.plants: list[Plant] = plants
 
         def total_add(self) -> int:
             """
             庭に追加された植物の総数を返すメソッド
             戻り値: int
             """
-            i = 0
+            i: int = 0
             for _ in self.plants:
                 i += 1
             return i
@@ -105,7 +105,9 @@ class GardenManager:
             戻り値:
                 (regular, flowering, prize)
             """
-            regular = flowering = prize = 0
+            regular: int = 0
+            flowering: int = 0
+            prize: int = 0
             for plant in self.plants:
                 if plant.category == "prize":
                     prize += 1
@@ -119,21 +121,21 @@ class GardenManager:
             """
             庭のスコアを計算して返すメソッド
             """
-            score = 92
+            score: int = 92
             for plant in self.plants:
                 if plant.category == "prize":
                     if plant.points > 0:
                         score = 218
             return score
 
-    def add_plant(self, plant):
+    def add_plant(self, plant: Plant) -> None:
         """
         庭に植物を追加するメソッド
         """
-        self.plants.append(plant)
+        self.plants += [plant]
         print(f"Added {plant.name} to {self.owned}'s garden")
 
-    def grow_all(self):
+    def grow_all(self) -> None:
         """
         庭にある全ての植物を成長させるメソッド
         """
@@ -142,7 +144,7 @@ class GardenManager:
             plant.grow()
             self.total_growth += 1
 
-    def report(self):
+    def report(self) -> None:
         """
         庭の状態をレポート表示するメソッド
         """
@@ -166,33 +168,37 @@ class GardenManager:
               f"{prize} prize flowers")
 
     @classmethod
-    def create_garden_network(cls):
+    def create_garden_network(cls) -> None:
         """
         全ての庭のスコアと数を表示するクラスメソッド
         """
-        scores = []
-        i = 0
+        count: int = 0
+        first: bool = True
+        line: str = "Garden scores - "
         for garden in cls.gardens:
-            stats = cls.GardenStats(garden.plants)
-            scores.append(f"{garden.owned}: {stats.get_score()}")
-            i += 1
-        print("Garden scores - " + ", ".join(scores))
-        print(f"Total gardens managed: {i}")
+            stats: GardenManager.GardenStats = cls.GardenStats(garden.plants)
+            if not first:
+                line += ", "
+            first = False
+            line += f"{garden.owned}: {stats.get_score()}"
+            count += 1
+        print(line)
+        print(f"Total gardens managed: {count}")
 
     @staticmethod
-    def validate_height(height):
+    def validate_height(height: int) -> None:
         """
         高さが0以上かどうかを検証するスタティックメソッド
         """
         print(f"Height validation test: {height >= 0}")
 
 
-def ft_garden_analytics():
+def ft_garden_analytics() -> None:
     """
     GardenManagerシステム全体の動作を確認する関数
     """
     print("=== Garden Management System Demo ===")
-    alice = GardenManager("Alice")
+    alice: GardenManager = GardenManager("Alice")
     GardenManager("Bob")
     print()
     alice.add_plant(Plant("Oak Tree", 100, 100))
